@@ -6,21 +6,21 @@ namespace ToolBox.Reactors
 {
 	public class SignalDispatcher : IReactor
 	{
-		[SerializeField, Required] private Signal signal = null;
+		[SerializeField, Required] private Signal _signal = null;
 
 		public void HandleReaction() =>
-			signal.Dispatch();
+			_signal.Dispatch();
 	}
 
 	public class SignalDispatcher<T, S> : IReactor, IReactor<T> where S : GenericSignal<T>
 	{
-		[SerializeField, Required] private S signal = null;
-		[SerializeField] private T value = default;
+		[SerializeField, Required] private S _signal = null;
+		[SerializeField] private T _value = default;
 
 		public void HandleReaction() =>
-			signal.Dispatch(value);
+			_signal.Dispatch(_value);
 
 		public void HandleReaction(T value) =>
-			signal.Dispatch(value);
+			_signal.Dispatch(value);
 	}
 }

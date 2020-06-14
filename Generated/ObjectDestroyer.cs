@@ -5,10 +5,10 @@ namespace ToolBox.Reactors
 {
 	public sealed class ObjectDestroyer : IReactor, IGameObjectReactor
 	{
-		[SerializeField, Required, SceneObjectsOnly] private GameObject objectToDestroy = null;
+		[SerializeField, Required, SceneObjectsOnly] private GameObject _objectToDestroy = null;
 
 		public void HandleReaction() =>
-			Object.Destroy(objectToDestroy);
+			Object.Destroy(_objectToDestroy);
 
 		public void HandleReaction(GameObject value) =>
 			Object.Destroy(value);

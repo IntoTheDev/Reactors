@@ -4,9 +4,9 @@ namespace ToolBox.Reactors
 {
 	public sealed class Debugger : IReactor
 	{
-		[SerializeField] private string message = "Message!";
+		[SerializeField] private string _message = "Message!";
 
 		public void HandleReaction() =>
-			Debug.Log(message);
+			Debug.Log(_message);
 	}
 }

@@ -5,13 +5,13 @@ namespace ToolBox.Reactors
 {
 	public sealed class GameObjectToggler : IReactor, IGameObjectReactor
 	{
-		[SerializeField, SceneObjectsOnly] private GameObject objectToToggle = null;
-		[SerializeField] private bool active = false;
+		[SerializeField, SceneObjectsOnly] private GameObject _objectToToggle = null;
+		[SerializeField] private bool _active = false;
 
 		public void HandleReaction() =>
-			objectToToggle.SetActive(active);
+			_objectToToggle.SetActive(_active);
 
 		public void HandleReaction(GameObject value) =>
-			value.SetActive(active);
+			value.SetActive(_active);
 	}
 }

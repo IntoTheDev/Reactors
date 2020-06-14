@@ -4,16 +4,16 @@ namespace ToolBox.Reactors
 {
 	public sealed class BehaviourToggler : IReactor
 	{
-		[SerializeField] private Behaviour[] behaivoursToEnable = null;
-		[SerializeField] private Behaviour[] behaivoursToDisable = null;
+		[SerializeField] private Behaviour[] _behaivoursToEnable = null;
+		[SerializeField] private Behaviour[] _behaivoursToDisable = null;
 
 		public void HandleReaction()
 		{
-			for (int i = 0; i < behaivoursToDisable.Length; i++)
-				behaivoursToEnable[i].enabled = true;
+			for (int i = 0; i < _behaivoursToDisable.Length; i++)
+				_behaivoursToEnable[i].enabled = true;
 
-			for (int i = 0; i < behaivoursToDisable.Length; i++)
-				behaivoursToDisable[i].enabled = false;
+			for (int i = 0; i < _behaivoursToDisable.Length; i++)
+				_behaivoursToDisable[i].enabled = false;
 		}
 	}
 }

@@ -9,13 +9,13 @@ namespace ToolBox.Reactors
 {
 	public class SceneLoader : IReactor, IStringReactor
 	{
-		[SerializeReference, Required] private ISceneGetter _sceneGetter = null;
-		[ShowInInspector, ReadOnly] private static bool _isLoading = false;
+		[SerializeReference, Required] private ISceneGetter sceneGetter = null;
+		[ShowInInspector, ReadOnly] private static bool isLoading = false;
 
 		public void HandleReaction()
 		{
-			if (_sceneGetter != null)
-				StartSceneLoading(_sceneGetter.GetScene());
+			if (sceneGetter != null)
+				StartSceneLoading(sceneGetter.GetScene());
 		}
 
 		public void HandleReaction(string value) =>
@@ -23,20 +23,20 @@ namespace ToolBox.Reactors
 
 		private void StartSceneLoading(string sceneName)
 		{
-			if (!_isLoading)
+			if (!isLoading)
 				Timing.RunCoroutine(LoadSceneAsync(sceneName));
 		}
 
 		private IEnumerator<float> LoadSceneAsync(string sceneName)
 		{
-			_isLoading = true;
+			isLoading = true;
 			AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(sceneName);
 
 			while (!sceneLoading.isDone)
 				yield return 0f;
 
 			Time.timeScale = 1f;
-			_isLoading = false;
+			isLoading = false;
 		}
 	}
 
@@ -52,12 +52,12 @@ namespace ToolBox.Reactors
 #endif
 	{
 #if UNITY_EDITOR
-		[SerializeField, Required, AssetSelector] private SceneAsset _sceneAsset = null;
+		[SerializeField, Required, AssetSelector] private SceneAsset sceneAsset = null;
 #endif
-		[SerializeField, ReadOnly] private string _sceneName = "";
+		[SerializeField, ReadOnly] private string sceneName = "";
 
 		public string GetScene() =>
-			_sceneName;
+			sceneName;
 
 #if UNITY_EDITOR
 		public void OnAfterDeserialize()
@@ -67,8 +67,8 @@ namespace ToolBox.Reactors
 
 		public void OnBeforeSerialize()
 		{
-			if (_sceneAsset != null)
-				_sceneName = _sceneAsset.name;
+			if (sceneAsset != null)
+				sceneName = sceneAsset.name;
 		}
 #endif
 	}

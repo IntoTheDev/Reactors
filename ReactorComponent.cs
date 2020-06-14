@@ -4,12 +4,12 @@ namespace ToolBox.Reactors
 {
 	public class ReactorComponent : MonoBehaviour, IReactor
 	{
-		[SerializeField] private Reactor[] reactors = null;
+		[SerializeField] private Reactor[] _reactors = null;
 
 		public void Dispatch(int index) =>
-			reactors[index].SendReaction();
+			_reactors[index].SendReaction();
 
 		public void HandleReaction() =>
-			reactors[0].SendReaction();
+			_reactors[0].SendReaction();
 	}
 }
