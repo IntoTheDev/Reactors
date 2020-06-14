@@ -9,7 +9,7 @@ namespace ToolBox.Reactors
 
 		public void HandleReaction()
 		{
-			for (int i = 0; i < _behaivoursToDisable.Length; i++)
+			for (int i = 0; i < _behaivoursToEnable.Length; i++)
 				_behaivoursToEnable[i].enabled = true;
 
 			for (int i = 0; i < _behaivoursToDisable.Length; i++)
