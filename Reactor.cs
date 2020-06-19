@@ -7,7 +7,8 @@ namespace ToolBox.Reactors
 	public class Reactor : ISetupable
 	{
 		[SerializeReference] private IReactor[] _reactors = null;
-
+		
+		[Button, ButtonGroup]
 		public void Setup()
 		{
 			for (int i = 0; i < _reactors.Length; i++)
@@ -17,7 +18,7 @@ namespace ToolBox.Reactors
 			}
 		}
 
-		[Button]
+		[Button, ButtonGroup]
 		public void SendReaction()
 		{
 			for (int i = 0; i < _reactors.Length; i++)
@@ -30,6 +31,7 @@ namespace ToolBox.Reactors
 	{
 		[SerializeReference] private R[] _reactors = null;
 
+		[Button, ButtonGroup]
 		public void Setup()
 		{
 			for (int i = 0; i < _reactors.Length; i++)
@@ -39,7 +41,7 @@ namespace ToolBox.Reactors
 			}
 		}
 
-		[Button]
+		[Button, ButtonGroup]
 		public void SendReaction(T value)
 		{
 			for (int i = 0; i < _reactors.Length; i++)
