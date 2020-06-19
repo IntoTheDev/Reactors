@@ -6,6 +6,12 @@ namespace ToolBox.Reactors
 	{
 		[SerializeField] private Reactor[] _reactors = null;
 
+		private void Awake()
+		{
+			for (int i = 0; i < _reactors.Length; i++)
+				_reactors[i].Setup();
+		}
+
 		public void Dispatch(int index) =>
 			_reactors[index].SendReaction();
 
