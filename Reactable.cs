@@ -2,7 +2,7 @@
 
 namespace ToolBox.Reactors
 {
-	public class ReactorComponent : MonoBehaviour, IReactor
+	public class Reactable : MonoBehaviour, IReactor
 	{
 		[SerializeField] private Reactor[] _reactors = null;
 
