@@ -7,7 +7,7 @@ namespace ToolBox.Reactors
 	public class Reactor : ISetupable
 	{
 		[SerializeReference] private IReactor[] _reactors = null;
-		
+
 		[Button, ButtonGroup]
 		public void Setup()
 		{
