@@ -6,11 +6,11 @@ namespace ToolBox.Reactors
 {
 	public abstract class Tweener : IReactor
 	{
-		[SerializeField, FoldoutGroup("Main")] protected Ease _ease = default;
+		[SerializeField, FoldoutGroup("Main")] private Ease _ease = default;
 		[SerializeField, FoldoutGroup("Main")] private bool _interruptable = false;
 		[SerializeField, FoldoutGroup("Main")] private int _loops = 0;
 		[SerializeField, FoldoutGroup("Main")] private LoopType _loopType = default;
-		[ShowInInspector, ReadOnly, FoldoutGroup("Main")] protected bool _running = false;
+		[ShowInInspector, ReadOnly, FoldoutGroup("Main")] private bool _running = false;
 
 		private Tween _tween = null;
 
