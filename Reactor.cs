@@ -6,7 +6,7 @@ namespace ToolBox.Reactors
 	[System.Serializable]
 	public class Reactor : ISetupable
 	{
-		[SerializeReference] private IReactor[] _reactors = null;
+		[SerializeReference, ListDrawerSettings(Expanded = true)] private IReactor[] _reactors = null;
 
 		[Button, ButtonGroup]
 		public void Setup()
@@ -29,7 +29,7 @@ namespace ToolBox.Reactors
 	[System.Serializable]
 	public class Reactor<T, R> : ISetupable where R : IReactor<T>
 	{
-		[SerializeReference] private R[] _reactors = null;
+		[SerializeReference, ListDrawerSettings(Expanded = true)] private R[] _reactors = null;
 
 		[Button, ButtonGroup]
 		public void Setup()
