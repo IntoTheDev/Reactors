@@ -4,15 +4,20 @@ using UnityEngine;
 
 namespace ToolBox.Reactors
 {
-	public abstract class Tweener : IReactor
+	public abstract class Tweener : IReactor, ISetupable
 	{
 		[SerializeField, FoldoutGroup("Main")] private Ease _ease = default;
 		[SerializeField, FoldoutGroup("Main")] private bool _interruptable = false;
 		[SerializeField, FoldoutGroup("Main")] private int _loops = 0;
 		[SerializeField, FoldoutGroup("Main")] private LoopType _loopType = default;
 		[ShowInInspector, ReadOnly, FoldoutGroup("Main")] private bool _running = false;
-
+		
+		[SerializeField, FoldoutGroup("Reactor")] private Reactor _onComplete = null;
+		
 		private Tween _tween = null;
+
+		public void Setup() =>
+			_onComplete.Setup();
 
 		public void HandleReaction()
 		{
@@ -34,7 +39,10 @@ namespace ToolBox.Reactors
 
 		protected abstract Tween RunTween();
 
-		protected virtual void OnComplete() =>
+		protected virtual void OnComplete()
+		{
+			_onComplete.SendReaction();
 			_running = false;
+		}
 	}
 }
