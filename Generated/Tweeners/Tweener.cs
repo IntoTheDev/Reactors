@@ -9,7 +9,7 @@ namespace ToolBox.Reactors
 		[SerializeField, FoldoutGroup("Main")] private Ease _ease = default;
 		[SerializeField, FoldoutGroup("Main")] private bool _interruptable = false;
 		[SerializeField, FoldoutGroup("Main")] private int _loops = 0;
-		[SerializeField, FoldoutGroup("Main")] private LoopType _loopType = default;
+		[SerializeField, FoldoutGroup("Main"), ShowIf("@this._loops != 0")] private LoopType _loopType = default;
 		[ShowInInspector, ReadOnly, FoldoutGroup("Main")] private bool _running = false;
 		
 		[SerializeField, FoldoutGroup("Reactor")] private Reactor _onComplete = null;
