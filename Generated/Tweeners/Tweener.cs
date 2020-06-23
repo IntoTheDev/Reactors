@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -11,13 +11,16 @@ namespace ToolBox.Reactors
 		[SerializeField, FoldoutGroup("Main")] private int _loops = 0;
 		[SerializeField, FoldoutGroup("Main"), ShowIf("@this._loops != 0")] private LoopType _loopType = default;
 		[ShowInInspector, ReadOnly, FoldoutGroup("Main")] private bool _running = false;
-		
+
 		[SerializeField, FoldoutGroup("Reactor")] private Reactor _onComplete = null;
-		
+
 		private Tween _tween = null;
 
-		public void Setup() =>
+		public void Setup()
+		{
 			_onComplete.Setup();
+			Initialize();
+		}
 
 		public void HandleReaction()
 		{
@@ -37,12 +40,13 @@ namespace ToolBox.Reactors
 			_running = true;
 		}
 
-		protected abstract Tween RunTween();
-
 		protected virtual void OnComplete()
 		{
 			_onComplete.SendReaction();
 			_running = false;
 		}
+
+		protected abstract Tween RunTween();
+		protected virtual void Initialize() { }
 	}
 }
